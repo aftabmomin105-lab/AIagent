@@ -1,400 +1,468 @@
-# AIagent
-# 🤖 Basic AI Agent
+# 🤖 Advanced Python AI Agent
 
-## 📌 Project Overview
-
-This project is a basic **AI Agent** developed using **Python** and the **OpenAI API**.
-
-The agent accepts questions or instructions from the user and sends them to an AI model through the OpenAI API. The generated response is then displayed to the user.
-
-This project is developed as part of the **AI-Augmented Workflow** course to understand how artificial intelligence can be integrated into a Python application and how AI-assisted coding tools can support software development.
+A simple **rule-based AI Agent built using Python**.
+This project demonstrates how an AI agent can interact with users, perform basic tasks, and maintain simple memory during program execution.
 
 ---
 
-## 🎯 Objectives
+## 📌 Project Overview
 
-The main objectives of this project are:
+This Python AI Agent can:
 
-* To understand the basic concept of an AI Agent.
-* To develop a simple AI Agent using Python.
-* To connect a Python application with an AI model using an API.
-* To understand API-based communication.
-* To use AI-assisted coding tools during development.
-* To practice testing and debugging AI-generated code.
-* To document the development process using an Architecture Decision Record (ADR).
+* 👋 Respond to greetings
+* 🕐 Display the current time
+* 📅 Display the current date
+* 🧮 Perform basic calculations
+* 🧠 Remember information provided by the user
+* 💭 Display previously remembered information
+* 👋 Exit the program when the user types `bye`
+
+The project is designed for beginners to understand the basic structure and working of an AI agent.
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Technology     | Purpose                |
-| -------------- | ---------------------- |
-| Python         | Programming language   |
-| OpenAI API     | AI model communication |
-| VS Code        | Code editor            |
-| Git            | Version control        |
-| GitHub         | Code repository        |
-| GitHub Copilot | AI-assisted coding     |
-| Markdown       | Project documentation  |
-
----
-
-## 🏗️ System Architecture
-
-The basic architecture of the AI Agent is:
-
-```text
-              ┌──────────────┐
-              │     User     │
-              └──────┬───────┘
-                     │
-                     │ Question / Prompt
-                     ▼
-              ┌──────────────┐
-              │ Python Agent │
-              └──────┬───────┘
-                     │
-                     │ API Request
-                     ▼
-              ┌──────────────┐
-              │  OpenAI API  │
-              └──────┬───────┘
-                     │
-                     │ AI Response
-                     ▼
-              ┌──────────────┐
-              │ Python Agent │
-              └──────┬───────┘
-                     │
-                     ▼
-              ┌──────────────┐
-              │     User     │
-              └──────────────┘
-```
+* **Python 3**
+* `datetime` module
+* `math` module
+* Python functions
+* Lists
+* Conditional statements
+* User input/output
+* Basic expression evaluation
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-AI-Agent-Project/
+AI-Agent/
 │
-├── README.md
-├── ADR.md
-├── CONTRIBUTION_LOG.md
-├── requirements.txt
-├── .gitignore
-│
-├── src/
-│   └── agent.py
-│
-└── screenshots/
-    ├── project-structure.png
-    ├── agent-running.png
-    ├── copilot.png
-    └── github.png
+├── ai_agent.py
+└── README.md
+```
+
+### Files
+
+| File          | Description                                 |
+| ------------- | ------------------------------------------- |
+| `ai_agent.py` | Main Python program containing the AI Agent |
+| `README.md`   | Documentation for the project               |
+
+---
+
+## ⚙️ Features
+
+### 1. Greeting
+
+The agent recognizes simple greetings such as:
+
+```text
+hello
+hi
+```
+
+Example:
+
+```text
+You: hello
+Agent: Hello! I am your AI agent. How can I help you?
 ```
 
 ---
 
-## ⚙️ Installation
+### 2. Current Time
+
+The agent can display the current system time.
+
+Example:
+
+```text
+You: time
+Agent: The current time is 16:30:25
+```
+
+The time is obtained using Python's `datetime` module.
+
+---
+
+### 3. Current Date
+
+The agent can display today's date.
+
+Example:
+
+```text
+You: date
+Agent: Today's date is 18-08-2026
+```
+
+---
+
+### 4. Calculator
+
+The agent can perform basic mathematical calculations.
+
+Example:
+
+```text
+You: calculate 10+20
+Agent: The answer is 30
+```
+
+Other examples:
+
+```text
+calculate 50-20
+calculate 5*10
+calculate 100/4
+calculate 2**5
+```
+
+---
+
+### 5. Agent Memory
+
+The agent has a simple memory system using a Python list.
+
+The user can tell the agent to remember something.
+
+Example:
+
+```text
+You: remember my favorite color is blue
+Agent: I will remember that.
+```
+
+The information is stored in the `memory` list.
+
+---
+
+### 6. Show Memory
+
+The user can ask:
+
+```text
+You: what do you remember?
+```
+
+Example response:
+
+```text
+Agent: I remember: my favorite color is blue
+```
+
+Multiple pieces of information can also be stored.
+
+Example:
+
+```text
+You: remember my favorite color is blue
+You: remember I like football
+You: what do you remember?
+
+Agent: I remember: my favorite color is blue, I like football
+```
+
+> **Note:** This memory exists only while the Python program is running. It is not permanently saved to a file or database.
+
+---
+
+### 7. Exit the Agent
+
+To stop the program, type:
+
+```text
+bye
+```
+
+Example:
+
+```text
+You: bye
+Agent: Goodbye! 👋
+```
+
+---
+
+## 🧠 How the AI Agent Works
+
+The agent follows a simple decision-making process:
+
+```text
+User Input
+    ↓
+Convert Input to Lowercase
+    ↓
+Analyze User Command
+    ↓
+Identify Required Action
+    ↓
+Call Appropriate Function
+    ↓
+Generate Response
+    ↓
+Display Response
+```
+
+For example:
+
+```text
+User: What time is it?
+        ↓
+Agent detects "time"
+        ↓
+get_time()
+        ↓
+Current time is returned
+        ↓
+Agent displays the result
+```
+
+---
+
+## 🔧 Main Functions
+
+### `get_time()`
+
+Returns the current system time.
+
+```python
+def get_time():
+    return datetime.datetime.now().strftime("%H:%M:%S")
+```
+
+---
+
+### `get_date()`
+
+Returns the current date.
+
+```python
+def get_date():
+    return datetime.datetime.now().strftime("%d-%m-%Y")
+```
+
+---
+
+### `calculator(expression)`
+
+Evaluates a mathematical expression and returns the result.
+
+```python
+def calculator(expression):
+    try:
+        result = eval(expression, {"__builtins__": None}, {})
+        return f"The answer is {result}"
+    except:
+        return "Sorry, I could not calculate that."
+```
+
+---
+
+### `remember(text)`
+
+Stores information in the agent's memory.
+
+```python
+def remember(text):
+    memory.append(text)
+    return "I will remember that."
+```
+
+---
+
+### `show_memory()`
+
+Displays information stored in memory.
+
+```python
+def show_memory():
+    if not memory:
+        return "I don't remember anything yet."
+
+    return "I remember: " + ", ".join(memory)
+```
+
+---
+
+### `agent(user_input)`
+
+This is the main decision-making function.
+
+It analyzes the user's input and decides which action should be performed.
+
+For example:
+
+```python
+if "time" in text:
+    return "The current time is " + get_time()
+```
+
+---
+
+## ▶️ How to Run the Project
 
 ### Step 1: Install Python
 
-Make sure Python is installed on your computer.
+Make sure **Python 3** is installed on your computer.
 
-Check the installed version:
+Check the installation using:
 
 ```bash
 python --version
 ```
 
----
-
-### Step 2: Create a Virtual Environment
-
-Open the terminal in the project directory:
+or:
 
 ```bash
-python -m venv venv
+py --version
 ```
 
-Activate the virtual environment on Windows:
+---
+
+### Step 2: Open the Project
+
+Open the project folder in **VS Code**.
+
+Make sure your Python file is saved as:
+
+```text
+ai_agent.py
+```
+
+---
+
+### Step 3: Run the Program
+
+Open the VS Code terminal and run:
 
 ```bash
-venv\Scripts\activate
+python ai_agent.py
 ```
 
----
-
-### Step 3: Install Required Package
-
-Install the OpenAI Python library:
+If that does not work on Windows, try:
 
 ```bash
-pip install openai
-```
-
-Save the dependencies:
-
-```bash
-pip freeze > requirements.txt
+py ai_agent.py
 ```
 
 ---
 
-## 🔑 API Key Configuration
-
-The OpenAI API requires an API key.
-
-The API key should **not** be written directly inside the Python source code.
-
-Set the API key as an environment variable.
-
-### Windows
-
-```cmd
-setx OPENAI_API_KEY "your_api_key_here"
-```
-
-After setting the variable, restart VS Code or the terminal.
-
-### Security
-
-Never upload your API key to GitHub.
-
-The `.gitignore` file should contain:
+## 💻 Example Execution
 
 ```text
-.env
-venv/
-__pycache__/
+========================================
+🤖 ADVANCED PYTHON AI AGENT
+========================================
+Type 'bye' to stop.
+
+You: hello
+Agent: Hello! I am your AI agent. How can I help you?
+
+You: time
+Agent: The current time is 16:30:25
+
+You: date
+Agent: Today's date is 18-08-2026
+
+You: calculate 25+75
+Agent: The answer is 100
+
+You: remember my favorite color is blue
+Agent: I will remember that.
+
+You: what do you remember?
+Agent: I remember: my favorite color is blue
+
+You: bye
+Agent: Goodbye! 👋
 ```
 
 ---
 
-## 💻 Running the AI Agent
+## 📋 Supported Commands
 
-Run the following command from the project directory:
-
-```bash
-python src/agent.py
-```
-
-The program will display:
-
-```text
-===== Basic AI Agent =====
-Type 'exit' to stop the agent.
-
-You:
-```
-
-Enter a question, for example:
-
-```text
-You: What is Artificial Intelligence?
-```
-
-The AI Agent will generate a response:
-
-```text
-Agent: Artificial Intelligence is a field of computer science...
-```
-
-To stop the program:
-
-```text
-You: exit
-```
+| Command                 | Function                 |
+| ----------------------- | ------------------------ |
+| `hello`                 | Greets the user          |
+| `hi`                    | Greets the user          |
+| `time`                  | Shows current time       |
+| `date`                  | Shows current date       |
+| `remember ...`          | Stores information       |
+| `what do you remember?` | Shows stored information |
+| `calculate 10+20`       | Performs calculation     |
+| `bye`                   | Stops the agent          |
 
 ---
 
-## 🧠 Basic Agent Workflow
+## 🔒 Limitations
 
-The working process of the project is:
+This is a **basic rule-based AI agent**, so it has some limitations:
 
-```text
-User Input
-    ↓
-Python Program
-    ↓
-OpenAI API
-    ↓
-AI Model
-    ↓
-Generated Response
-    ↓
-Python Program
-    ↓
-User
-```
-
----
-
-## 🤖 AI-Assisted Development
-
-AI tools are used during the development of this project to support:
-
-* Python code generation
-* Code explanation
-* Debugging
-* Error identification
-* Documentation
-* Project structure planning
-
-The AI-generated code is reviewed and tested by the student before being used in the final project.
-
-The development workflow is:
-
-```text
-AI Suggestion
-      ↓
-Human Review
-      ↓
-Code Modification
-      ↓
-Testing
-      ↓
-Final Implementation
-```
-
----
-
-## 📝 Architecture Decision Record
-
-The project's main technical decision is documented in:
-
-```text
-ADR.md
-```
-
-### Selected Technology Stack
-
-**Python + OpenAI API + VS Code + GitHub Copilot + Git/GitHub**
-
-The ADR explains:
-
-* Why Python was selected.
-* Why the OpenAI API was selected.
-* Alternative options such as Ollama.
-* Advantages and disadvantages.
-* AI-assisted coding compatibility.
-* Security considerations.
-
----
-
-## 📊 Testing
-
-The AI Agent can be tested using different questions.
-
-| Test No. | Input                         | Expected Result      | Status |
-| -------- | ----------------------------- | -------------------- | ------ |
-| 1        | What is AI?                   | AI explanation       | Pass   |
-| 2        | Explain Python                | Python explanation   | Pass   |
-| 3        | What is an AI Agent?          | AI Agent explanation | Pass   |
-| 4        | Give three applications of AI | Three applications   | Pass   |
-| 5        | exit                          | Program terminates   | Pass   |
-
----
-
-## 📸 Project Evidence
-
-Screenshots of the project can be stored in the `screenshots` folder.
-
-Recommended screenshots:
-
-1. Project folder structure
-2. Python code in VS Code
-3. AI Agent running in the terminal
-4. AI-assisted coding using GitHub Copilot
-5. GitHub repository
-6. Testing results
-
----
-
-## 📋 AI Contribution Log
-
-AI-assisted contributions are recorded in:
-
-```text
-CONTRIBUTION_LOG.md
-```
-
-The contribution log records:
-
-* Date
-* File or section
-* AI tool used
-* AI-generated suggestion
-* Student's modifications
-* Testing performed
-
----
-
-## 🔐 Security Considerations
-
-The API key is treated as a secret credential.
-
-The following practices are followed:
-
-* API keys are not hard-coded.
-* API keys are not uploaded to GitHub.
-* Sensitive files are added to `.gitignore`.
-* AI-generated code is reviewed before use.
+1. It does not use a real Large Language Model (LLM).
+2. It understands only predefined commands.
+3. Memory is temporary.
+4. Memory is lost when the program is closed.
+5. The calculator supports expressions that Python's `eval()` accepts.
+6. It does not understand natural language as flexibly as modern AI assistants.
 
 ---
 
 ## 🚀 Future Improvements
 
-The basic AI Agent can be extended with:
+The project can be extended with:
 
-* Voice input
-* Voice output
-* Chat history
-* Web search
-* File/document processing
-* User interface
-* Memory
-* Multiple AI tools
-* Local AI models using Ollama
-* Task planning and execution
-
----
-
-## 📚 Learning Outcomes
-
-After completing this project, the following concepts are understood:
-
-* Basic AI Agent architecture
-* Python programming
-* API communication
-* AI model interaction
-* Environment variables
-* Git and GitHub
-* AI-assisted programming
-* Code testing and debugging
-* Technical documentation
-* Architecture Decision Records
+* 🧠 Permanent memory using files or databases
+* 🤖 Integration with an actual LLM/API
+* 🎤 Voice input
+* 🔊 Voice output
+* 🌐 Web search capability
+* 📁 File handling
+* 🖥️ Graphical User Interface (GUI)
+* 🔐 Better input validation
+* 📊 Logging of agent activities
+* 🧩 Multiple specialized tools
+* 💬 Better natural-language understanding
 
 ---
 
-## ✅ Conclusion
+## 🎯 Learning Objectives
 
-The **Basic AI Agent** demonstrates how a Python application can communicate with an AI model through an API and provide responses to user queries.
+This project helps demonstrate:
 
-The project also demonstrates an **AI-Augmented Workflow**, where AI tools are used to assist with coding, debugging, documentation, and development while the student remains responsible for reviewing, testing, and understanding the final implementation.
-
-This project provides a foundation for developing more advanced AI Agents with additional tools, memory, planning, and automation capabilities.
+* Python programming fundamentals
+* Functions
+* Conditional statements
+* Lists
+* Exception handling
+* User input and output
+* Modular programming
+* Tool-based agent design
+* Basic memory implementation
+* Decision-making logic
 
 ---
 
-## 👨‍🎓 Project Information
+## 👨‍💻 Project Type
 
 **Project:** Basic AI Agent
+**Language:** Python
+**Level:** Beginner
+**Purpose:** Educational / College Project
 **Course:** AI-Augmented Workflow
-**Programming Language:** Python
-**AI Platform:** OpenAI API
-**Development Tool:** Visual Studio Code
-**Version Control:** Git/GitHub
-**Documentation:** Markdown
+
+---
+
+## 📜 License
+
+This project is created for **educational and academic purposes**.
+
+---
+
+## ⭐ Conclusion
+
+This project demonstrates the basic concept of an **AI Agent** using Python. The agent receives user input, identifies the requested task, calls an appropriate function, and returns a response.
+
+Although it is a simple rule-based implementation, it provides a foundation for developing more advanced AI agents with **LLMs, external tools, databases, APIs, and permanent memory**.
